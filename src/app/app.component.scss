@@ -1,0 +1,149 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: darkgray;
+}
+
+.header {
+  width: 100%;
+
+
+.mat-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+}
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: 90%;
+  margin: 10px;
+  border: 1px solid rgb(149, 149, 149);
+
+  .imgContainer {
+    margin: 0px;
+    background-color: cornflowerblue;
+  }
+  .dropContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid rgb(152, 49, 49);
+
+    .dropZone {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 90%;
+      height: 90%;
+      border: 1px dotted rgb(169, 37, 37);
+      background-color: #fff;
+
+      .newItem {
+        position: relative;
+        // align-self:flex-start;
+        // align-items: center;
+        display: grid;
+        justify-content: center;
+        height: 100%;
+        background-color: rgb(255, 255, 255);
+
+        img {
+          margin: 4px;
+          // border: 2px dotted rgb(32, 163, 58);
+          width: 95%;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .imgFlex {
+    cursor: move;
+    width: 128px;
+    height: auto;
+  }
+}
+
+.cdk-drag-preview {
+  // transform: translate(-50%,-50%);
+  border: 6px dotted rgb(1, 119, 82);
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 12px;
+  width: 180px !important;
+  height: 300px !important;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+
+    img {
+      width: 150px;
+      height: auto;
+    }
+}
+
+.draggable-element .drag-handle{
+  cursor: grab;
+}
+
+.draggable-element.cdk-drag-preview .drag-handle {
+  pointer-events: auto;
+  cursor: grabbing;
+  width: 200px;
+}
+
+.newItemImg {
+position: relative;
+display: grid;;
+}
+
+.metDeleteIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 29px;
+  height: 64px;
+  color:crimson;
+  font-size: 2rem;
+  z-index: 99;
+}
+
+
+.flex2 {
+  /*flex: 2 0 35%;  or - flex: 0 50% - or - flex-basis: 50% - */
+  grid-template-columns: 50% 50%;
+}
+
+.flex3 {
+  /*flex: 3 0 25%;  or - flex: 0 50% - or - flex-basis: 50% - */
+  grid-template-columns: 33% 33% 33%;
+}
+
+.flex4 {
+  /* flex: 2 0 15%; or - flex: 0 50% - or - flex-basis: 50% - */
+  grid-template-columns: 300px 300px 300px;
+  grid-template-rows: 300px 300px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+.mat-card {
+  margin-bottom: 6px;
+}
