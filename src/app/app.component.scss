@@ -136,14 +136,23 @@ display: grid;;
   grid-template-rows: 300px 300px;
 }
 
+
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
   'wght' 400,
   'GRAD' 0,
-  'opsz' 48
+  'opsz' 64
 }
 
 .mat-card {
   margin-bottom: 6px;
+}
+
+.clear-imge-icon {
+  width: 42px;
+  height: 42px;
+  margin-left: 29px;
+  cursor: pointer;
+  border: 1px solid #fff;
 }

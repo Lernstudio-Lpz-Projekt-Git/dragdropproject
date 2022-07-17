@@ -62,4 +62,9 @@ export class AppComponent {
       this.currentTragetList.splice(index, 1);
       this.imgInTargetCounter -= 1;
   }
+
+  clearLayout() {
+    this.currentTragetList = [];
+    this.imgInTargetCounter = 0;
+  }
 }

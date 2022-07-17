@@ -2,12 +2,20 @@
   <mat-toolbar color="primary" class="mat-header" role="heading">
     <button
       mat-icon-button
-      class="exampldrag-imge-icon"
+      class="drag-imge-icon"
       aria-label="Example icon-button with menu icon"
     >
       <mat-icon> swipe_right</mat-icon>
     </button>
     <span>Angular Project Drag&Drop</span>
+    <button
+    mat-icon-button
+    class="clear-imge-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="clearLayout()"
+  >
+    <mat-icon>replay_circle_filled</mat-icon>
+  </button>
   </mat-toolbar>
 </header>
 
