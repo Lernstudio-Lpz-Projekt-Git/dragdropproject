@@ -8,7 +8,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export class AppComponent {
   title = 'dragdropproject';
-  imgInTargetCounter: number = 0;
+  // Liste der Quell-Elemente, hier Bild-Dateinamen aus dem Assets-Verzeichnis
   imagesList: string[] = [
     'eisbecher1.jpg',
     'eisbecher2.jpg',
@@ -19,23 +19,29 @@ export class AppComponent {
     'eisbecher7.jpg',
   ];
 
+  // Aktuelle Liste der Elemente im Targetbereich
   currentTragetList: string[] = [];
+  // Anzahl der Elemente im Targetbereich
+  imgInTargetCounter: number = this.currentTragetList.length;
   dragging: boolean = true;
 
+  // Aufruf der Funktion, durch den in der [cdkDropDropped] definierten Bezeichner (Bilderliste)
+  // Wie Sie im untenstehenden Code-Snippet sehen können, enthält das Drag-and-Drop-CDK auch eine Utility-Funktion
+  // [moveItemInArray]. Diese Funktion wird verwendet, um den neuen Index des abgelegten Elements innerhalb des Arrays zu berechnen
   dropSourceImage(event: CdkDragDrop<string[]>) {
     if (this.imgInTargetCounter < 6) {
-      console.log('event.currentIndex', event.currentIndex);
-      moveItemInArray(this.imagesList, event.previousIndex, event.currentIndex);
+      // Berechnet den neuen Index einer Liste nach dem Drop-Event, wir hier nicht benötigt
+      // moveItemInArray(this.imagesList, event.previousIndex, event.currentIndex);
+      // Das zentrale Array zum Verwalten der plazierten Elemente
       this.currentTragetList.push(this.imagesList[event.currentIndex]);
-      console.log('event.imagesList', this.imagesList);
-      this.imgInTargetCounter += 1;
-      console.log('imgInTargetCounter', this.currentTragetList);
+      // Aktuelle Anzahl der plazierten Elemente
+      this.imgInTargetCounter = this.currentTragetList.length;
     }
   }
 
+// Aufruf der Funktion, durch den in der [cdkDropDropped] definierten Bezeichner (Target-Bereich)
   dropTargetImage(event: CdkDragDrop<string[]>) {
-    this.dragging = true;
-    console.log('Target currentIndex', event.currentIndex);
+// [moveItemInArray]. Diese Funktion wird verwendet, um den neuen Index des abgelegten Elements innerhalb des Arrays zu berechnen,
     moveItemInArray(
       this.currentTragetList,
       event.previousIndex,
@@ -43,26 +49,25 @@ export class AppComponent {
     );
   }
 
+// Entfernt einzelne Eelemnte aus dem Array und damit aus dem Target-Bereich
+// Übergeben wird das Mouse-Event-Object, aus dem die Id Extrahiert wird
   onDeleteDrop(e: any): void {
     if (this.dragging) {
       var target = e.target.getAttribute("id");
-      console.log(target);
       this.removeItem(target);
-      //this.dragging = false;
       return;
     }
   }
 
   removeItem(item: string) {
-    let index = this.currentTragetList
-      .map(function (elem) {
-        return elem;
-      })
-      .indexOf(item);
+    // Emeittelt den Index des zu löschenden Elementes im Array
+    let index = this.currentTragetList.indexOf(item);
+    // Und entfernt es aus der Liste
       this.currentTragetList.splice(index, 1);
-      this.imgInTargetCounter -= 1;
+      this.imgInTargetCounter = this.currentTragetList.length;
   }
 
+  // Entfernt alle Elemente aus dem Targetbereich
   clearLayout() {
     this.currentTragetList = [];
     this.imgInTargetCounter = 0;

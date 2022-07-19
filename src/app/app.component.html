@@ -20,6 +20,9 @@
 </header>
 
 <mat-drawer-container class="container">
+<!-- // spezieller Material Side-Container der ein- und ausgeblendet werden kann // -->
+<!-- // Wenn wir ein Element ziehen, müssen wir eine [cdkDropDropped] Funktion implementieren um eine damit verbunden Funktions aufzurufen // -->
+<!-- // Die [cdkDropDropped]-Funktion wird jedes Mal aufgerufen, wenn der Benutzer ein Element in der Dropzone ablegt. // -->
   <mat-drawer mode="side" opened class="imgContainer">
     <div
       fxLayout="column"
@@ -27,7 +30,10 @@
       cdkDropList
       (cdkDropListDropped)="dropSourceImage($event)"
     >
-      <div
+<!-- // Nachdem wir das [DragDropModule] importiert haben, können wir unsere erste ziehbare Komponente mithilfe der cdkDragDirektive erstellen // -->
+<!-- // Ist die [cdkDrag] Direktive zu Elementen hinzufügen, macht sie dieses verschiebbar // -->
+<!-- // Mithilfe der [cdkDragData]-Direktive binden Sie den Status Ihres Elements // -->
+<div
         fxFlex="25%"
         *ngFor="let image of imagesList"
         cdkDrag
@@ -49,8 +55,8 @@
   <mat-drawer-content class="dropContainer">
     <div class="dropZone">
       <div
-        cdkDropList
-        (cdkDropListDropped)="dropTargetImage($event)"
+      cdkDropList
+      (cdkDropListDropped)="dropTargetImage($event)"
         [ngClass]="{
           newItem: true,
           flex2: imgInTargetCounter === 2,
@@ -76,4 +82,5 @@
   </mat-drawer-content>
 </mat-drawer-container>
 
-<!-- cdkDrag cdkDragBoundary=".dropZone" -->
+
+
